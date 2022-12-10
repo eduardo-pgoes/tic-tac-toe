@@ -2,10 +2,57 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
 }
 
+.grid {
+    box-shadow: -10px 10px 15px -3px rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    min-height: 25vh;
+    flex-basis: auto;
+    min-width: 25vh;
+    border-radius: 10px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.row-0 > .btn-game.column-0 {
+    border-top-left-radius: 10px;
+}
+
+
 .btn-game {
-    min-height: 10vh;
-    min-width: 10vh;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    overflow: hidden;
+    border: 0.5px solid rgba(255, 255, 255, 0.5);
+    min-height: 25vh;
+    min-width: 25vh; 
+    font-size: 1.2rem;
+    color: white;
+}
+
+.piece-O {
+    color: red;
+}
+
+.piece-X {
+    color: blue;
+}
+.row-0 > .btn-game.column-2 {
+    border-top-right-radius: 10px;
+}
+
+.row-2 > .btn-game.column-0 {
+    border-bottom-left-radius: 10px;
+}
+
+.row-2 > .btn-game.column-2 {
+    border-bottom-right-radius: 10px;
 }

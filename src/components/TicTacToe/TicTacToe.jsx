@@ -18,29 +18,28 @@ class TicTacToe extends Component {
     }
 
     render() {
-        let columns1 = [], columns2 = [], columns0 = [];
+        let columns = [[], [], []];
         let iterations = 0;
         // This is a really ugly workaround for creating a grid, I'm sorry!
         for (let i = 0; i < 3; i++) {
-            columns0.push(<button key={iterations} onClick={() =>this.handlePiece(0, i)} className={"btn-game column-" + i}></button>);
-            iterations++;
-            columns1.push(<button key={iterations} onClick={() =>this.handlePiece(1, i)} className={"btn-game column-" + i}></button>);
-            iterations++;
-            columns2.push(<button key={iterations} onClick={() =>this.handlePiece(2, i)} className={"btn-game column-" + i}></button>);
-            iterations++;
+            console.log(this.state);
+            for (let j = 0; j < 3; j++) {
+                columns[i].push(<button key={iterations} onClick={() =>this.handlePiece(i, j)} className={"btn-game column-" + j + " piece-" + this.state.gameState.gameState[i][j]}>{this.state.gameState.gameState[i][j]}</button>);
+            }
         }
 
         return (
             <div className="container">
-                <div class="grid">
-                    <div class="row-0">
-                        {columns0}
+                <h1>TicTacToe</h1>
+                <div className="grid">
+                    <div className="row row-0">
+                        {columns[0]}
                     </div>
-                    <div class="row-1">
-                        {columns1}
+                    <div className="row row-1">
+                        {columns[1]}
                     </div>
-                    <div class="row-2">
-                        {columns2}
+                    <div className="row row-2">
+                        {columns[2]}
                     </div>
                 </div>
             </div>
@@ -53,7 +52,6 @@ class TicTacToe extends Component {
         } else {
             this.gameState.addPiece('X', i, j);
         }
-        console.log(this.gameState.gameState);
         this.setState({iterations: this.state.iterations + 1, gameState: this.gameState});
     }
 }
