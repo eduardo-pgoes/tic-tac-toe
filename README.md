@@ -1,5 +1,6 @@
 # React Tic-Tac-Toe
 A simple project implementing a Tic-Tac-Toe game in React.js. ;)
+
 ## Available Scripts
 
 In the project directory, you can run:

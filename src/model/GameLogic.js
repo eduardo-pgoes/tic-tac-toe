@@ -33,6 +33,7 @@ class GameLogic {
     /* Adds a piece to the board - if it's a valid one. */
     addPiece(piece, row, column) {
         if (piece === 'O' || piece === 'X') this.gameState[row][column] = piece;
+        this.winner = this.verifyGameStateVictory();
     }
 
     /* Verifies a victory in the main diagonal. */

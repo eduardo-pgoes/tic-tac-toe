@@ -1,0 +1,11 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.btn-game {
+    min-height: 10vh;
+    min-width: 10vh;
+}
