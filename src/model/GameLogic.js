@@ -2,8 +2,9 @@
 * @classdesc Class representing TicTacToe game logic. 
 */
 class GameLogic {
-    constructor(gameState = [['X', 'O', 'O'],['X', 'O', 'X'],['X', 'X', 'O']]) {
+    constructor(gameState = [[undefined, undefined, undefined], [undefined, undefined, undefined], [undefined, undefined, undefined]]) {
         this.gameState = gameState;
+        this.winner = undefined
     }
     
     /* Verifies all the possible ways to win in TicTacToe. */
@@ -31,7 +32,7 @@ class GameLogic {
 
     /* Adds a piece to the board - if it's a valid one. */
     addPiece(piece, row, column) {
-        if (piece === 'O' || piece === 'X') this.gameState[row[column]] = piece;
+        if (piece === 'O' || piece === 'X') this.gameState[row][column] = piece;
     }
 
     /* Verifies a victory in the main diagonal. */
@@ -71,4 +72,4 @@ class GameLogic {
     }
 }
 
-export default GameLogic;
+export {GameLogic};
