@@ -1,20 +1,23 @@
 import {Component} from 'react';
 
-import {GameLogic} from '../../model/GameLogic'
+import {GameLogic} from '../../model/GameLogic';
 
-import './TicTacToe.css'
+import {MatchModal} from "./MatchModal";
+
+import './TicTacToe.css';
 
 class TicTacToe extends Component {
     constructor() {
         super();
 
+        // Represents the tic-tac-toe's state
         this.gameState = new GameLogic();
 
         this.state = {
             gameState: this.gameState,
-            iterations: 0
-        }
-    
+            iterations: 0,
+            showModal: false
+        }    
     }
 
     render() {
@@ -42,17 +45,27 @@ class TicTacToe extends Component {
                         {columns[2]}
                     </div>
                 </div>
+                <MatchModal show={this.state.showModal} winner={this.state.gameState.winner}></MatchModal>
             </div>
         );
     }   
     
     handlePiece(i, j) {
-        if (this.state.iterations % 2 === 0) {
-            this.gameState.addPiece('O', i, j);
-        } else {
-            this.gameState.addPiece('X', i, j);
-        }
+        this.gameState.addPiece(this.getCurrentPiece(), i, j);
         this.setState({iterations: this.state.iterations + 1, gameState: this.gameState});
+        this.renderWinningModal();
+    }
+
+    getCurrentPiece() {
+        if (this.state.iterations % 2 === 0) {
+            return 'O';
+        } else {
+            return 'X';
+        }
+    }
+
+    renderWinningModal() {
+        if (this.state.gameState.winner) this.setState({showModal: true});
     }
 }
 
