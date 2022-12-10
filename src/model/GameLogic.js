@@ -17,6 +17,7 @@ class GameLogic {
         if (antiDiagonal) return antiDiagonal;
 
         let lines = this.#verifyLines(this.gameState);
+        console.log(lines);
         if (lines) return lines;
 
         let columns = this.#verifyColumns(this.gameState);
@@ -56,7 +57,7 @@ class GameLogic {
     #verifyLines(gameState) {
         for (let i = 0; i < 3; i++) {
             if ((gameState[i][0] === gameState[i][1]) && (gameState[i][1] === gameState[i][2])) {
-                return gameState[i][0] !== '' ? gameState[i][0] : undefined; 
+                if (gameState[i][0] !== undefined) return gameState[i][0];
             }
         }
         return undefined;
@@ -66,7 +67,7 @@ class GameLogic {
     #verifyColumns(gameState) {
         for (let i = 0; i < 3; i++) {
             if ((gameState[0][i] === gameState[1][i]) && (gameState[1][i] === gameState[2][i])) {
-                return gameState[0][i] !== '' ? gameState[0][i] : undefined; 
+                if (gameState[0][i] !== undefined) return gameState[0][i];
             }
         }
         return undefined;

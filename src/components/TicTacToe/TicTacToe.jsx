@@ -22,12 +22,11 @@ class TicTacToe extends Component {
 
     render() {
         let columns = [[], [], []];
-        let iterations = 0;
         // This is a really ugly workaround for creating a grid, I'm sorry!
         for (let i = 0; i < 3; i++) {
             console.log(this.state);
             for (let j = 0; j < 3; j++) {
-                columns[i].push(<button key={iterations} onClick={() =>this.handlePiece(i, j)} className={"btn-game column-" + j + " piece-" + this.state.gameState.gameState[i][j]}>{this.state.gameState.gameState[i][j]}</button>);
+                columns[i].push(<button key={i+j+1} onClick={() =>this.handlePiece(i, j)} className={"btn-game column-" + j + " piece-" + this.state.gameState.gameState[i][j]}>{this.state.gameState.gameState[i][j]}</button>);
             }
         }
 
@@ -66,6 +65,7 @@ class TicTacToe extends Component {
 
     renderWinningModal() {
         if (this.state.gameState.winner) this.setState({showModal: true});
+        if (this.state.iterations === 8) this.setState({showModal: true});
     }
 }
 
